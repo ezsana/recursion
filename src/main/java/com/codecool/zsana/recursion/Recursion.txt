@@ -1,0 +1,30 @@
+What is Recursion? (geeksforgeeks)
+The process in which a function calls itself directly or indirectly is called
+recursion and the corresponding function is called as recursive function.
+Using recursive algorithm, certain problems can be solved quite easily.
+Examples of such problems are Towers of Hanoi (TOH),
+Inorder/Preorder/Postorder Tree Traversals, DFS of Graph, etc.
+
+What is base condition in recursion?
+In the recursive program, the solution to the base case is provided and the solution
+of the bigger problem is expressed in terms of smaller problems.
+
+    int factorial(int n)
+    {
+        if (n <= 1)  // base case
+            return 1;
+        else
+            return n*factorial(n-1);
+    }
+
+In the above example, base case for n < = 1 is defined and larger value of number can be solved
+by converting to smaller one till base case is reached.
+
+Stack:
+          |   return 1;  - base case = 1;     => factorial(1) = 1;
+          |   return 2*factorial(1); = 2 * 1!; => factorial(2) = 2;
+          |   return 3*factorial(2); = 3 * 2!; => factorial(3) = 6;
+          |   return 4*factorial(3); = 4 * 3!; => factorial(4) = 24;
+         \ /  return 5*factorial(4); = 5 * 4!; => factorial(5) = 120;
+
+
