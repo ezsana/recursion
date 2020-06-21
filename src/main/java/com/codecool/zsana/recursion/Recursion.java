@@ -1,20 +1,18 @@
 package com.codecool.zsana.recursion;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Recursion {
 
     /**
-     * classic Fibonacci
+     * classic Fibonacci: 1,1,2,3...
      */
 
     static int fibonacci(int n) {
         if (n == 0 || n == 1) {
-            return 0;
-        }
-        if (n == 2) {
-            return 1;
+            return n;
         }
         return fibonacci(n-1) + fibonacci(n-2);
     }
@@ -100,8 +98,52 @@ public class Recursion {
         }
     }
 
+    /**
+     * Given a set of characters and a positive integer k, print all possible strings
+     * of length k that can be formed from the given set.
+     * For a given set of size n, there will be n^k possible strings of length k.
+     * The idea is to start from an empty output string.
+     * One by one add all characters to it. For every character added, print all possible
+     * strings with current prefix by recursively calling for k equals to k-1.
+     */
+
+    private static void getSubstrings(String[] s, int len, String str) {
+        if (len == 0) {
+            System.out.println(str);
+            return;
+        }
+        for (int i = 0; i < s.length; i++) {
+            String temp = str + s[i];
+            getSubstrings(s, len-1, temp);
+        }
+    }
+
+    /**
+     * The atoi() function in C takes a string (which represents an integer) as an argument
+     * and returns its value of type int. So basically the function is used to convert a string argument to an integer.
+     * Parameters: The function accepts one parameter s which refers to the string argument
+     * that is needed to be converted into its integer equivalent.
+     */
+
+    static int atoiNonRecursive(String s) {
+        int result = 0;
+        for (int i = 0; i < s.length(); i++) {
+            result = result * 10 + s.charAt(i) - '0';
+        }
+        return result;
+    }
+
+    static int atoiRecursive(String s, int index) {
+        if (s.length() == 0) {
+            return 0;
+        }
+
+        return 0;
+    }
+
     public static void main(String[] args) {
-        System.out.println(isPalindrome(-2));
+        System.out.println(fibonacci(4));
+        //System.out.println(atoiRecursive("234", 0));
     }
 
 }
