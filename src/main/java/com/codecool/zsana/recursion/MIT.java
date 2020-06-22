@@ -138,7 +138,11 @@ public class MIT {
         return null;
     }
 
-    static int pIt(int firstXSum) {
+    /**
+     * Sum of the first x numbers.
+     */
+
+    static int firstXIt(int firstXSum) {
         int sum = 0;
         for (int i = 1; i <= firstXSum; i++) {
             sum += i;
@@ -147,9 +151,9 @@ public class MIT {
         return sum;
     }
 
-    static int pRec(int firstXSum) {
+    static int firstXRec(int firstXSum) {
         if (firstXSum <= 1) return firstXSum;
-        return firstXSum + pRec(firstXSum-1);
+        return firstXSum + firstXRec(firstXSum-1);
     }
 
     static List<Integer> pascalIter(int row) {
@@ -169,8 +173,31 @@ public class MIT {
         return numbers;
     }
 
-    public static void main(String[] args) {
+    /**
+     * Consider the problem of computing the exponential of a given number.
+     * We would like a procedure that takes as arguments a base b and a positive integer exponent n and computes b^n.
+     */
 
+    static int exponential(int b, int n) {
+        if (n == 0) return 1;
+        return b * exponential(b, n-1);
+    }
+
+    /**
+     * Just as with factorial, we can readily formulate an equivalent linear iteration of the above
+     */
+
+    static int expLinear(int b, int n) {
+        return expIter(b, n, 1);
+    }
+
+    static int expIter(int b, int counter, int result) {
+        if (counter == 0) { return result; }
+        return expIter(b, (counter - 1), (b * result));
+    }
+
+    public static void main(String[] args) {
+        System.out.println(exponential(10,4));
     }
 
 }
